@@ -1,5 +1,5 @@
 export const metadata = {
-    title: "Exemplo de CRUD"
+    title: "Blog de Notícias"
 }
 
 export default function Page() {
