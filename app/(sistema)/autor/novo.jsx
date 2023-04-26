@@ -26,14 +26,6 @@ export const schema = yup.object({
         .min(1, 'A data de nascimento deve estar no formato dd/mm/aaaa')
         .max(100, 'A data deve ser válida')
         .required('A data de nascimento é obrigatória'),
-    senha: yup.string()
-        .min(8, 'A senha deve conter, no mínimo, 8 caracteres')
-        .max(100, 'A senha deve conter letras, números e símbolos')
-        .required('A senha é obrigatória'),
-    status: yup.string()
-        .min(1, 'O status deve conter, no mínimo, 3 caracteres')
-        .max(10, 'O status deve conter, no máximo, 10 caracteres')
-        .required('O status é obrigatório'),
 }).required();
 
 export default function LeitorNovo() {
@@ -73,7 +65,7 @@ export default function LeitorNovo() {
 
     return (
         <>
-            <Button onClick={() => setModalShow(true)}>Novo</Button>
+            <Button onClick={() => setModalShow(true)}> Cadastro de Autor </Button>
 
             <Modal size="md" centered show={modalShow}>
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -109,14 +101,7 @@ export default function LeitorNovo() {
                        Senha
                         <input type="password" className="form-control"  {...register("senha")} />
                         <span className='text-danger'>{errors.senha?.message}</span>
-                    </label>
-
-                    <label className="row mx-2">
-                       Status
-                        <input type="text" className="form-control"  {...register("status")} />
-                        <span className='text-danger'>{errors.status?.message}</span>
-                    </label>
-                    
+                    </label>                    
                     </Modal.Body>
                     <Modal.Footer>
                         <BusyButton variant="success" type="submit" label="Salvar" busy={busy}/>

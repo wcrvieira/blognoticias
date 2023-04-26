@@ -45,8 +45,6 @@ export default function Cliente(props) {
                         <td>{p.apelido}</td>
                         <td>{p.email}</td>                        
                         <td>{p.nascimento}</td>
-                        <td>{p.senha}</td>
-                        <td>{p.status}</td>
                         <td>
                             <Dropdown>
                                 <Dropdown.Toggle>Opção</Dropdown.Toggle>
@@ -88,8 +86,6 @@ export default function Cliente(props) {
                         <th>Apelido</th>
                         <th>E-mail</th>
                         <th>Data de nascimento</th>
-                        <th>Senha</th>
-                        <th>Status</th>
                         <th>Opções</th>
                     </tr>
                 </thead>
