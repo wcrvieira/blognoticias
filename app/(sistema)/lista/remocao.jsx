@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { MessageCallbackContext } from "../layout";
-import { AtualizarNoticiaContext } from "./cliente";
+import { AtualizarNoticiaContext } from "../noticia/cliente";
 
 export default function NoticiaRemover(props) {
 

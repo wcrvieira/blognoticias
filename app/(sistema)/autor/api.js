@@ -1,6 +1,7 @@
 import "server-only";
 
-const route = process.env.API_URL + "/autor";
+//const route = process.env.API_URL + "/autor";
+const route = "http://localhost:5177/api/autor";
 
 async function getAllErrors(error) {
     let message = '';

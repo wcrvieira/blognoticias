@@ -1,38 +1,20 @@
-export const metadata = {
-    title: "Blog de Notícias"
-}
+'use server'
 
-export default function Page() {
-    return (
+import { handleRequest } from "./api";
+import Cliente from "./cliente";
+
+export async function generateMetadata({ params }) {
+    return {
+      title: 'Notícias'
+    };
+  }
+
+export default async function Page(){
+    return(
         <>
-            <br />
-            <div class="card">
-                <h5 class="card-header">00/00/0000</h5>
-                <div class="card-body">
-                    <h5 class="card-title">Título da Notícia</h5>
-                    <p class="card-text">texto da noticia</p>
-                    <a href="#" class="btn btn-primary">Continuar lendo...</a>
-                </div>
-            </div>
-            <br />
-            <div class="card">
-                <h5 class="card-header">00/00/0000</h5>
-                <div class="card-body">
-                    <h5 class="card-title">Título da Notícia</h5>
-                    <p class="card-text">texto da noticia</p>
-                    <a href="#" class="btn btn-primary">Continuar lendo...</a>
-                </div>
-            </div>  
+            <h2>Manutenção de Notícias.</h2>
 
-            <br />
-            <div class="card">
-                <h5 class="card-header">00/00/0000</h5>
-                <div class="card-body">
-                    <h5 class="card-title">Título da Notícia</h5>
-                    <p class="card-text">texto da noticia</p>
-                    <a href="#" class="btn btn-primary">Continuar lendo...</a>
-                </div>
-            </div>                 
+            <Cliente serverRequest={handleRequest}/>
         </>
     )
 }

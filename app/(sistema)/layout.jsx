@@ -20,7 +20,7 @@ export default function Layout({ children }) {
                 icon = 'success';
             else if (msg.tipo === 'erro')
                 icon = 'error';
-
+    
             MySwal.fire({
                 position: 'top-end',
                 icon: icon,

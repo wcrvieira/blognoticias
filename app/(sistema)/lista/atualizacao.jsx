@@ -3,9 +3,9 @@ import { useEffect, useState, useContext } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
-import { schema } from "./novo";
+import { schema } from "../noticia/novo";
 import { MessageCallbackContext } from "../layout";
-import { AtualizarNoticiaContext } from "./cliente";
+import { AtualizarNoticiaContext } from "../noticia/cliente";
 
 export default function NoticiaAtualizacao(props) {
 

@@ -12,9 +12,7 @@ export async function generateMetadata({ params }) {
 export default async function Page(){
     return(
         <>
-            <h2>Cadastro de notícias</h2>
-            <h4>Manutenção de notícias</h4>
-
+            <h2>Cadastro de notícias.</h2>
             <Cliente serverRequest={handleRequest}/>
         </>
     )
