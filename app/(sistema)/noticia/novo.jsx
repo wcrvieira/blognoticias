@@ -60,7 +60,7 @@ export default function NoticiaNovo() {
 
     return (
         <>
-            <Button onClick={() => setModalShow(true)}>Novo</Button>
+            <Button onClick={() => setModalShow(true)}>Nova Notícia</Button>
 
             <Modal size="md" centered show={modalShow}>
                 <form onSubmit={handleSubmit(onSubmit)}>

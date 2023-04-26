@@ -73,7 +73,7 @@ export default function NoticiaAtualizacao(props) {
         <Modal size="md" centered show={modalShow}>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Modal.Header>
-                    <Modal.Title>Atualização de Leitor</Modal.Title>
+                    <Modal.Title>Atualização de Notícias</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <label className="row mx-2">

@@ -13,8 +13,6 @@ export default async function Page(){
     return(
         <>
             <h2>Cadastro de leitor</h2>
-            <h4>Manutenção de leitores</h4>
-
             <Cliente serverRequest={handleRequest}/>
         </>
     )

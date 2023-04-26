@@ -65,7 +65,7 @@ export default function LeitorNovo() {
 
     return (
         <>
-            <Button onClick={() => setModalShow(true)}>Novo</Button>
+            <Button onClick={() => setModalShow(true)}>Cadastrar novo Leitor</Button>
 
             <Modal size="md" centered show={modalShow}>
                 <form onSubmit={handleSubmit(onSubmit)}>
