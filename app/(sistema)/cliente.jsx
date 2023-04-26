@@ -34,7 +34,6 @@ export default function Cliente(props) {
                             <h5 class="card-title">Título : {p.titulo}</h5>
                             <h7 class="card-title">::. {p.subtitulo} ..::</h7>
                             <p class="card-text">{p.texto}</p>
-                            <a href="#" class="btn btn-primary">Continuar lendo...</a>
                         </div>
                     </div>
                 );
