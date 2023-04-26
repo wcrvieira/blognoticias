@@ -1,16 +1,16 @@
-import BusyButton from "@/app/componentes/buusybutton";
+import BusyButton from "@/app/componentes/busybutton";
 import { useContext, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { MessageCallbackContext } from "../layout";
-import { AtualizarTipoCursoContext } from "./cliente";
+import { AtualizarNoticiaContext } from "./cliente";
 
-export default function TipoCursoRemover(props) {
+export default function NoticiaRemover(props) {
 
     const [modalShow, setModalShow] = useState(true);
     const [busy, setBusy] = useState(false);
 
-    const atualizarCallback = useContext(AtualizarTipoCursoContext);
+    const atualizarCallback = useContext(AtualizarNoticiaContext);
     const messageCallback = useContext(MessageCallbackContext);
 
     const { handleSubmit } = useForm();
@@ -39,10 +39,10 @@ export default function TipoCursoRemover(props) {
         <Modal size="md" centered show={modalShow}>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Modal.Header>
-                    <Modal.Title>Remoção de Tipo de Curso</Modal.Title>
+                    <Modal.Title>Remoção de notícia</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    Deseja realmente remover este tipo de curso?
+                    Deseja realmente remover esta notícia?
                 </Modal.Body>
                 <Modal.Footer>
                     <BusyButton variant="danger" type="submit" label="Remover" busy={busy} />

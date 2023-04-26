@@ -1,20 +1,20 @@
-import BusyButton from "@/app/componentes/buusybutton";
+import BusyButton from "@/app/componentes/busybutton";
 import { useEffect, useState, useContext } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from "./novo";
 import { MessageCallbackContext } from "../layout";
-import { AtualizarTipoCursoContext } from "./cliente";
+import { AtualizarAutorContext } from "./cliente";
 
-export default function TipoCursoAtualizacao(props) {
+export default function AutorAtualizacao(props) {
 
     const [modalShow, setModalShow] = useState(true);
     const [busy, setBusy] = useState(false);
     const [primeiroAcesso, setPrimeiroAcesso] = useState(null);
 
     const messageCallback = useContext(MessageCallbackContext);
-    const atualizarCallback = useContext(AtualizarTipoCursoContext);
+    const atualizarCallback = useContext(AtualizarAutorContext);
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm({
         resolver: yupResolver(schema)
@@ -43,7 +43,7 @@ export default function TipoCursoAtualizacao(props) {
 
     useEffect(() => {
         if (modalShow === false) {
-            reset({ nome: '', descricao: '' })
+            reset({ nome: '', email: '', apelido: '', nascimento: '', senha: '', status: ''})
         }
     }, [modalShow]);
 
@@ -56,7 +56,9 @@ export default function TipoCursoAtualizacao(props) {
             atualizarCallback.serverRequest({method: 'get', args: {id: props.id}}).then(
                 (result) => {
                     if (result.success)
-                        reset({ nome: result.data.nome, descricao: result.data.descricao });
+                        reset({ nome: result.data.nome, email: result.data.email,
+                                apelido: result.data.apelido, nascimento: result.data.nascimento, 
+                                senha: result.data.senha, status: result.data.status});
                     else {
                         handleClose();
                         messageCallback({tipo: 'erro', texto: result.data});
@@ -70,7 +72,7 @@ export default function TipoCursoAtualizacao(props) {
         <Modal size="md" centered show={modalShow}>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Modal.Header>
-                    <Modal.Title>Atualização de Tipo de Curso</Modal.Title>
+                    <Modal.Title>Atualização de Autor</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <label className="row mx-2">
@@ -78,11 +80,37 @@ export default function TipoCursoAtualizacao(props) {
                         <input type="text" className="form-control"  {...register("nome")} />
                         <span className='text-danger'>{errors.nome?.message}</span>
                     </label>
-                    <label className="row mx-2 mt-2">
-                        Descrição
-                        <textarea className="form-control" style={{ height: '120px' }}  {...register("descricao")} />
-                        <span className='text-danger'>{errors.descricao?.message}</span>
+                    
+                    <label className="row mx-2">
+                        E-mail
+                        <input type="email" className="form-control"  {...register("email")} />
+                        <span className='text-danger'>{errors.email?.message}</span>
                     </label>
+
+                    <label className="row mx-2">
+                        Apelido
+                        <input type="text" className="form-control"  {...register("apelido")} />
+                        <span className='text-danger'>{errors.apelido?.message}</span>
+                    </label>
+
+                    <label className="row mx-2">
+                        Data de nascimento
+                        <input type="date" className="form-control"  {...register("nascimento")} />
+                        <span className='text-danger'>{errors.nascimento?.message}</span>
+                    </label>
+
+                    <label className="row mx-2">
+                       Senha
+                        <input type="password" className="form-control"  {...register("senha")} />
+                        <span className='text-danger'>{errors.senha?.message}</span>
+                    </label>
+
+                    <label className="row mx-2">
+                       Status
+                        <input type="text" className="form-control"  {...register("status")} />
+                        <span className='text-danger'>{errors.status?.message}</span>
+                    </label>
+
                 </Modal.Body>
                 <Modal.Footer>
                     <BusyButton variant="success" type="submit" label="Salvar" busy={busy} />

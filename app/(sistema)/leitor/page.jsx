@@ -5,15 +5,15 @@ import Cliente from "./cliente";
 
 export async function generateMetadata({ params }) {
     return {
-      title: 'Tipo de Curso'
+      title: 'Leitores'
     };
   }
 
 export default async function Page(){
     return(
         <>
-            <h2>Tipo de Curso</h2>
-            <h4>Exemplo de CRUD para Tipo de Curso</h4>
+            <h2>Cadastro de leitor</h2>
+            <h4>Manutenção de leitores</h4>
 
             <Cliente serverRequest={handleRequest}/>
         </>

@@ -6,15 +6,15 @@ import { createContext } from "react"
 import { useState } from "react"
 import { Dropdown, Table } from "react-bootstrap"
 import { MessageCallbackContext } from "../layout"
-import TipoCursoAtualizacao from "./atualizacao"
-import TipoCursoNovo from "./novo"
-import TipoCursoRemover from "./remocao"
+import AutorAtualizacao from "./atualizacao"
+import AutorNovo from "./novo"
+import AutorRemover from "./remocao"
 
 export const metadata = {
-    title: 'Tipo de Curso'
+    title: 'Autores'
 }
 
-export const AtualizarTipoCursoContext = createContext(null);
+export const AtualizarAutorContext = createContext(null);
 
 export default function Cliente(props) {
 
@@ -26,10 +26,10 @@ export default function Cliente(props) {
     let modal = null;
 
     if (operacao.action === "update") {
-        modal = <TipoCursoAtualizacao id={operacao.id} />
+        modal = <AutorAtualizacao id={operacao.id} />
     }
     else if (operacao.action === "delete") {
-        modal = <TipoCursoRemover id={operacao.id} />
+        modal = <AutorRemover id={operacao.id} />
     }
 
     const fecharModals = () => {
@@ -42,7 +42,11 @@ export default function Cliente(props) {
                 let finalGrid = result.data.map((p) =>
                     <tr key={p.id}>
                         <td>{p.nome}</td>
-                        <td>{p.descricao}</td>
+                        <td>{p.apelido}</td>
+                        <td>{p.email}</td>                        
+                        <td>{p.nascimento}</td>
+                        <td>{p.senha}</td>
+                        <td>{p.status}</td>
                         <td>
                             <Dropdown>
                                 <Dropdown.Toggle>Opção</Dropdown.Toggle>
@@ -72,16 +76,20 @@ export default function Cliente(props) {
 
     return (
         <>
-            <AtualizarTipoCursoContext.Provider value={{ atualizar: setAtualizarGrid, fechar: fecharModals, serverRequest: props.serverRequest }}>
-                <TipoCursoNovo />
+            <AtualizarAutorContext.Provider value={{ atualizar: setAtualizarGrid, fechar: fecharModals, serverRequest: props.serverRequest }}>
+                <AutorNovo />
                 {modal}
-            </AtualizarTipoCursoContext.Provider>
+            </AtualizarAutorContext.Provider>
 
             <Table striped hover>
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Descrição</th>
+                        <th>Apelido</th>
+                        <th>E-mail</th>
+                        <th>Data de nascimento</th>
+                        <th>Senha</th>
+                        <th>Status</th>
                         <th>Opções</th>
                     </tr>
                 </thead>

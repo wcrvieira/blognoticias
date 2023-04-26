@@ -44,7 +44,7 @@ export default function Layout({ children }) {
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
-                            <Nav.Link href="#action2">Leitores</Nav.Link>
+                            <Nav.Link href="/leitor">Leitores</Nav.Link>
                             <NavDropdown title="Notícias" id="navbarScrollingDropdown">
                                 <NavDropdown.Item href="/noticia">Nova notícia</NavDropdown.Item>
                                 <NavDropdown.Item href="/lista">
