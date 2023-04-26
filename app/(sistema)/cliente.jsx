@@ -27,16 +27,15 @@ export default function Cliente(props) {
         props.serverRequest({ method: 'get' }).then((result) => {
             if (result.success) {
                 let finalGrid = result.data.map((p) =>
-
                     <div class="card">
                         <h5 class="card-header">{p.data}</h5>
                         <div class="card-body">
                             <h5 class="card-title">Título : {p.titulo}</h5>
                             <h7 class="card-title">::. {p.subtitulo} ..::</h7>
                             <p class="card-text">{p.texto}</p>
-                        </div>
+                        </div>                         
                     </div>
-                );
+                );                
                 setGrid(finalGrid);
             }
             else
@@ -57,7 +56,6 @@ export default function Cliente(props) {
         <>
             <AtualizarNoticiaContext.Provider value={{ atualizar: setAtualizarGrid, fechar: fecharModals, serverRequest: props.serverRequest }}>
             </AtualizarNoticiaContext.Provider>
-
             {grid}
         </>
     )

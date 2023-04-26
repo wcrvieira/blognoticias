@@ -70,7 +70,7 @@ export default function LeitorNovo() {
             <Modal size="md" centered show={modalShow}>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <Modal.Header>
-                        <Modal.Title>Novo Leitor</Modal.Title>
+                        <Modal.Title> Cadastrar novo Leitor </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                     <label className="row mx-2">

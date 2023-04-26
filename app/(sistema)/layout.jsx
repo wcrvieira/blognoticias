@@ -47,7 +47,7 @@ export default function Layout({ children }) {
                             <Nav.Link href="/leitor">Leitores</Nav.Link>
                             <NavDropdown title="Notícias" id="navbarScrollingDropdown">
                                 <NavDropdown.Item href="/noticia">Nova notícia</NavDropdown.Item>
-                                <NavDropdown.Item href="/lista">
+                                <NavDropdown.Item href="/listanoticia">
                                     Lista de Notícias
                                 </NavDropdown.Item>
                                 <NavDropdown.Divider />

@@ -1,14 +1,11 @@
 'use client'
 
-import { useEffect } from "react"
 import { useContext } from "react"
 import { createContext } from "react"
 import { useState } from "react"
-import { Dropdown, Table } from "react-bootstrap"
+import { Button } from "react-bootstrap"
 import { MessageCallbackContext } from "../layout"
-import LeitorAtualizacao from "./atualizacao"
 import LeitorNovo from "./novo"
-import LeitorRemover from "./remocao"
 
 export const metadata = {
     title: 'Leitores'
@@ -25,74 +22,27 @@ export default function Cliente(props) {
 
     let modal = null;
 
-    if (operacao.action === "update") {
-        modal = <LeitorAtualizacao id={operacao.id} />
-    }
-    else if (operacao.action === "delete") {
-        modal = <LeitorRemover id={operacao.id} />
-    }
-
     const fecharModals = () => {
         setOperacao({ id: null, action: null });
     }
-
-    const pesquisar = () => {
-        props.serverRequest({method: 'get'}).then((result) => {
-            if (result.success) {
-                let finalGrid = result.data.map((p) =>
-                    <tr key={p.id}>
-                        <td>{p.nome}</td>
-                        <td>{p.email}</td>
-                        <td>{p.nascimento}</td>
-                        <td>{p.senha}</td>
-                        <td>
-                            <Dropdown>
-                                <Dropdown.Toggle>Opção</Dropdown.Toggle>
-                                <Dropdown.Menu>
-                                    <Dropdown.Item onClick={() => setOperacao({ id: p.id, action: "update" })}>Atualizar</Dropdown.Item>
-                                    <Dropdown.Item onClick={() => setOperacao({ id: p.id, action: "delete" })}>Remover</Dropdown.Item>
-                                </Dropdown.Menu>
-                            </Dropdown>
-                        </td>
-                    </tr>
-                );
-                setGrid(finalGrid);
-            }
-            else
-                messageCallback({ tipo: 'erro', texto: result.data });
-        });
-    }
-
-    useEffect(() => {
-        if (atualizarGrid === null)
-            setAtualizarGrid(true);
-        if (atualizarGrid) {
-            setAtualizarGrid(false);
-            pesquisar();
-        }
-    }, [atualizarGrid])
 
     return (
         <>
             <AtualizarLeitorContext.Provider value={{ atualizar: setAtualizarGrid, fechar: fecharModals, serverRequest: props.serverRequest }}>
                 <LeitorNovo />
-                {modal}
+                <a href="/listaleitor">
+                    <Button> Gerenciar Leitores </Button>
+                </a>
             </AtualizarLeitorContext.Provider>
+            <p/> 
+            <h3>Termos e condições de uso do blog</h3>
+            <h5>Seja bem-vindo ao nosso blog. Leia com atenção todos os termos abaixo.</h5>
+            <br/>            
+            <h8>A permanência no website implica-se automaticamente na leitura e aceitação tácita do presente termos de uso a seguir.</h8>
+            <p/>
+            <h8>Todo o conteúdo é atualizado periodicamente, porém, pode conter em algum artigo, vídeo ou imagem, alguma informação que não reflita a verdade atual, não podendo a EMPRESA ser responsabilizada de nenhuma forma ou meio por qualquer conteúdo que não esteja devidamente atualizado.</h8>
+            <h8> É de responsabilidade do usuário de usar todas as informações presentes no site com senso crítico, utilizando apenas como fonte de informação, e sempre buscando especialistas da área para a solução concreta do seu conflito.</h8>
 
-            <Table striped hover>
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>E-mail</th>
-                        <th>Data de nascimento</th>
-                        <th>Senha</th>
-                        <th>Opções</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {grid}
-                </tbody>
-            </Table>
         </>
     )
 }

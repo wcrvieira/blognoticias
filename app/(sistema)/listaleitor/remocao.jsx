@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { MessageCallbackContext } from "../layout";
-import { AtualizarLeitorContext } from "./cliente";
+import { AtualizarLeitorContext } from "../leitor/cliente";
 
 export default function LeitorRemover(props) {
 
