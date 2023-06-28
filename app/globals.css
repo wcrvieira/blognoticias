@@ -1,5 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+:root {
+    --primary-color: rgb(200 100 100);
+    --secondary-color: rgb(100 100 100);
+    --font-color: rgb(16, 6, 133);
+}
+
 .perfil {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
+}
+
+.perfil a {
+    text-decoration: none;
+    text-align: center;
+}
+
+.perfil a:hover {
+    color: var(--font-color);
+    font-size: 1.2em;
+}
+
+p {
+    text-align: justify;
 }
